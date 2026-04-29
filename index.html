@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>₿unny ₿anks</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;
+  background:#030303;
+  color:white;
+  font-family:Helvetica,Arial,sans-serif;
+}
+body::before{
+  content:"";
+  position:fixed;
+  inset:0;
+  background:radial-gradient(circle at 50% 0%,rgba(247,147,26,.18),transparent 35%);
+  pointer-events:none;
+  z-index:-1;
+}
+
+/* NAV */
+.nav{
+  position:fixed;
+  top:0;
+  width:100%;
+  height:74px;
+  padding:0 50px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  background:rgba(0,0,0,.72);
+  backdrop-filter:blur(18px);
+  border-bottom:1px solid rgba(255,255,255,.08);
+  z-index:10;
+}
+.brand{
+  font-weight:900;
+  letter-spacing:3px;
+}
+.nav button{
+  background:none;
+  border:none;
+  color:#aaa;
+  margin-left:22px;
+  cursor:pointer;
+  letter-spacing:2px;
+  text-transform:uppercase;
+  font-size:11px;
+}
+.nav button:hover{color:#f7931a}
+
+/* HERO */
+.hero{
+  min-height:100vh;
+  max-width:1180px;
+  margin:0 auto;
+  padding:170px 50px 100px;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+}
+.eyebrow{
+  color:#f7931a;
+  letter-spacing:5px;
+  text-transform:uppercase;
+  font-size:12px;
+  font-weight:900;
+}
+.hero h1{
+  font-size:clamp(70px,11vw,140px);
+  line-height:.88;
+  letter-spacing:-7px;
+  margin:25px 0;
+}
+.hero p{
+  color:#bbb;
+  font-size:22px;
+  line-height:1.6;
+  max-width:600px;
+}
+
+/* BUTTONS */
+.main-btn,
+.contact a{
+  display:inline-block;
+  width:fit-content;
+  margin-top:38px;
+  padding:18px 36px;
+  border-radius:999px;
+  border:none;
+  background:#f7931a;
+  color:#000;
+  font-weight:900;
+  letter-spacing:2px;
+  text-transform:uppercase;
+  text-decoration:none;
+  cursor:pointer;
+  transition:.3s ease;
+}
+.main-btn:hover,
+.contact a:hover{
+  transform:translateY(-3px);
+  box-shadow:0 0 55px rgba(247,147,26,.4);
+}
+
+/* STORY SECTIONS */
+.story{
+  max-width:1180px;
+  margin:0 auto;
+  padding:150px 50px;
+  display:grid;
+  grid-template-columns:1fr 1.1fr;
+  gap:80px;
+  border-top:1px solid rgba(255,255,255,.08);
+}
+.story h2,
+.contact h2{
+  font-size:clamp(54px,7vw,96px);
+  line-height:.95;
+  letter-spacing:-5px;
+  margin:20px 0 0;
+}
+.story-text p{
+  color:#aaa;
+  font-size:21px;
+  line-height:1.8;
+  margin:0 0 28px;
+}
+.story-text p:first-child{
+  color:white;
+  font-size:28px;
+  line-height:1.45;
+}
+
+/* GALLERY */
+.gallery{
+  max-width:1180px;
+  margin:0 auto;
+  padding:150px 50px;
+  display:flex;
+  justify-content:center;
+  border-top:1px solid rgba(255,255,255,.08);
+}
+.art-card{
+  width:440px;
+  padding:20px;
+  border-radius:34px;
+  background:linear-gradient(180deg,rgba(255,255,255,.09),rgba(255,255,255,.025));
+  border:1px solid rgba(255,255,255,.12);
+  box-shadow:0 60px 150px rgba(0,0,0,.7);
+  transition:.35s ease;
+}
+.art-card:hover{
+  transform:translateY(-8px) scale(1.02);
+  border-color:rgba(247,147,26,.45);
+  box-shadow:
+    0 60px 160px rgba(0,0,0,.9),
+    0 0 120px rgba(247,147,26,.25);
+}
+.art-image{
+  height:330px;
+  border-radius:26px;
+  background:
+    radial-gradient(circle at center,rgba(247,147,26,.28),transparent 38%),
+    linear-gradient(135deg,#171717,#050505);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+.art-image span{
+  color:#f7931a;
+  font-size:88px;
+  font-weight:900;
+  margin:0 8px;
+  text-shadow:
+    0 0 30px rgba(247,147,26,.7),
+    0 0 80px rgba(247,147,26,.4);
+  transition:.3s ease;
+}
+.art-card:hover .art-image span{
+  text-shadow:
+    0 0 60px rgba(247,147,26,1),
+    0 0 120px rgba(247,147,26,.6);
+}
+.status{
+  color:#f7931a;
+  letter-spacing:4px;
+  font-size:11px;
+  font-weight:900;
+  margin-top:28px;
+}
+.art-card h3{
+  font-size:36px;
+  margin:10px 0;
+}
+.art-card p{
+  color:#aaa;
+  line-height:1.6;
+}
+.price{
+  font-size:24px;
+  font-weight:900;
+  margin-top:25px;
+}
+
+/* CONTACT */
+.contact{
+  max-width:900px;
+  margin:0 auto;
+  padding:190px 50px;
+  text-align:center;
+  border-top:1px solid rgba(255,255,255,.08);
+}
+.contact h2{
+  margin-bottom:35px;
+}
+.contact a{
+  margin-top:20px;
+}
+
+footer{
+  text-align:center;
+  color:#555;
+  padding:60px 30px;
+  border-top:1px solid rgba(255,255,255,.08);
+}
+
+@media(max-width:800px){
+  .nav nav{display:none}
+  .hero,.story,.gallery,.contact{
+    padding-left:24px;
+    padding-right:24px;
+  }
+  .story{
+    grid-template-columns:1fr;
+    gap:40px;
+  }
+  .hero h1{
+    letter-spacing:-3px;
+  }
+  .art-card{
+    width:100%;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<header class="nav">
+  <div class="brand" onclick="goTo('home')" style="cursor:pointer;">₿unny ₿anks</div>
+  <nav>
+    <button onclick="goTo('home')">Home</button>
+    <button onclick="goTo('artist')">Artist</button>
+    <button onclick="goTo('studio')">Studio</button>
+    <button onclick="goTo('gallery')">Collection</button>
+    <button onclick="goTo('contact')">Contact</button>
+  </nav>
+</header>
+
+<section id="home" class="hero">
+  <p class="eyebrow">Anonymous ₿itcoin Artist</p>
+  <h1>Real art.<br>Paid in ₿itcoin.</h1>
+  <p>No NFTs. No copies. No noise.<br>Physical 1/1 artworks by ₿unny ₿anks.</p>
+  <button class="main-btn" onclick="goTo('gallery')">Enter Collection</button>
+</section>
+
+<section id="artist" class="story">
+  <div>
+    <p class="eyebrow">The Artist</p>
+    <h2>From banking trust<br>to ₿itcoin belief.</h2>
+  </div>
+
+  <div class="story-text">
+    <p>₿unny ₿anks was once part of the financial system he now rejects.</p>
+    <p>Working inside one of Switzerland’s most established banking institutions, he experienced how trust — the core of finance — can dissolve overnight.</p>
+    <p>When a major Swiss bank collapsed and was absorbed by another, the illusion of stability disappeared.</p>
+    <p>That moment marked a shift. ₿unny ₿anks stepped away from traditional finance and turned toward ₿itcoin — not as speculation, but as conviction.</p>
+    <p>No intermediaries. No hidden leverage. No institutional control. Only code, transparency, and belief.</p>
+    <p>Identity remains hidden. The message does not.</p>
+  </div>
+</section>
+
+<section id="studio" class="story">
+  <div>
+    <p class="eyebrow">The Studio</p>
+    <h2>Physical work.<br>One owner.</h2>
+  </div>
+
+  <div class="story-text">
+    <p>Every piece is handmade and sold as a 1/1 original. Once acquired, the artwork is archived as sold and removed from public availability.</p>
+  </div>
+</section>
+
+<section id="gallery" class="gallery">
+  <div class="art-card">
+    <div class="art-image">
+      <span>₿</span><span>₿</span>
+    </div>
+
+    <p class="status">AVAILABLE</p>
+    <h3>Artwork #001</h3>
+    <p>1/1 physical artwork. Signed. Archived. ₿itcoin only.</p>
+    <div class="price">0.0025 BTC</div>
+
+    <button class="main-btn" onclick="requestAcquisition('Artwork #001')">
+      Request Acquisition
+    </button>
+  </div>
+</section>
+
+<section id="contact" class="contact">
+  <p class="eyebrow">Contact</p>
+  <h2>Acquire privately.</h2>
+  <a href="mailto:contact@bunnybanks.com?subject=Acquisition Request - ₿unny ₿anks">
+    contact@bunnybanks.com
+  </a>
+</section>
+
+<footer>©️ ₿unny ₿anks — Anonymous Archive</footer>
+
+<script>
+function goTo(id){
+  document.getElementById(id).scrollIntoView({behavior:"smooth"});
+}
+
+function requestAcquisition(artworkName){
+  const subject=encodeURIComponent("Acquisition Request - "+artworkName);
+  const body=encodeURIComponent(
+    "Hello ₿unny ₿anks,\n\nI want to acquire "+artworkName+".\n\nName / Alias:\nShipping Country:\nMessage:\n"
+  );
+  window.location.href="mailto:contact@bunnybanks.com?subject="+subject+"&body="+body;
+}
+</script>
+
+</body>
+</html>
